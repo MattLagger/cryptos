@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,38 +25,34 @@
             <div class="card-body">
                 <h4 class="card-title">Formulario</h4>
                 <div class="container">
-                    <form>
+                    <form id="crypto_form">
                         <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <input type="text" class="form-control" name="message" id="message" aria-describedby="helpId"
-                                placeholder="">
-                            <small id="message" class="form-text text-muted">Preencha aqui com sua mensagem.</small>
+                          <label for="message">Mensagem</label>
+                          <textarea min="10" max="400" class="form-control" name="message" id="message" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="method">Método</label>
                             <select class="form-control" name="method" id="method">
-                                <option>Descriptografar</option>
-                                <option>Criptografar</option>
+                                <option value="uncrypto">Descriptografar</option>
+                                <option value="crypto">Criptografar</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="cypher">Tipo de Criptografia</label>
                             <select class="form-control" name="cypher" id="cypher">
-                                <option>BASE64</option>
-                                <option>Cifra de Caesar</option>
+                                <option value="BASE64">BASE64</option>
+                                <option value="caesar">Cifra de Caesar</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="formControlRange">Cifra de Caesar <span id="caesar_value">0</span></label>
-                            <input min="0" max="100" type="range" class="form-control-range" id="formControlRange">
+                        <div class="form-group caesar-value">
+                            <label for="formControlRange">Cifra de Caesar: &nbsp; <input id="caesar_value" value="3"></label>
+                            <input min="3" max="100" value="3" type="range" class="form-control-range" id="change_caesar_value">
                         </div>
                         <div class="form-group">
-                            <label for="result">Resultado</label>
-                            <input type="text" class="form-control" name="result" id="result" aria-describedby="helpId"
-                                placeholder="">
-                            <small id="helpId" class="form-text text-muted">Resultado da Criptografia</small>
+                          <label for="result">Resultado</label>
+                          <textarea disabled class="form-control" name="result" id="result" rows="3"></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary btn-block">SALVAR</button>
+                        <button type="submit" class="btn btn-primary btn-block">SALVAR</button>
                     </form>
                 </div>
             </div>
