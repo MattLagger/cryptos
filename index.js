@@ -46,9 +46,72 @@ function cryptography(value, method, cypher, caesar_value = 3) {
 
 
 function base64(value, method) {
-    
+    if (method == 'crypto') {
+        btoa
+        return btoa(value);
+    } else {
+        return atob(value);
+    }
 }
 
 function caesar_cypher(value, method, caesar_value) {
-
+    if (method == 'crypto') {
+        return caesar_crypto(value, caesar_value)
+    } else {
+        return caesar_unrypto(value, caesar_value)
+    }
 }
+
+function caesar_crypto (word, jump) {
+    var result = '';
+  
+    for(var i = 0; i < word.length; i++) {
+      var letter = word[i].charCodeAt();
+      if(letter > 64 && letter < 91) {
+        letter += jump;
+        if(letter > 90) {
+          result += String.fromCharCode((letter) - 26)
+        } else {
+          result += String.fromCharCode(letter)
+        }
+      } else if(letter > 96 && letter < 123) {
+        letter += jump;
+        if(letter > 122) {
+          result += String.fromCharCode((letter) - 26);
+        } else {
+          result += String.fromCharCode(letter);
+        }
+      } else {
+        result+=word[i];
+      }
+    }
+    
+    return result;
+  }
+  
+  function caesar_uncrypto (word, jump) {
+    var result = '';
+  
+    for(var i = 0; i < word.length; i++) {
+      var letter = word[i].charCodeAt();
+      if(letter > 64 && letter < 91) {
+        letter -= jump;
+        if(letter < 65) {
+          result += String.fromCharCode(letter + 26)
+        } else {
+          result += String.fromCharCode(letter)
+        }
+      } else if(letter > 96 && letter < 123) {
+        letter -= jump;
+        if(letter < 97) {
+          result += String.fromCharCode(letter + 26);
+        } else {
+          result += String.fromCharCode(letter);
+        }
+      } else {
+        result+=word[i];
+      }
+    }
+    
+    return result;
+  }
