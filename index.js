@@ -23,8 +23,8 @@ $(document).ready(function () {
         var cypher = $('#cypher').val();
         var caesar_value = $('#change_caesar_value').val();
 
-        if(value.length < 10) {
-            alert('A mensagem deve conter no minimo 10 caracteres');
+        if(value.length < 3) {
+            alert('A mensagem deve conter no minimo 3 caracteres');
             return;
         }
 
@@ -55,10 +55,13 @@ function base64(value, method) {
 }
 
 function caesar_cypher(value, method, caesar_value) {
+    console.log(caesar_value)
+    console.log(value)
+    console.log(method)
     if (method == 'crypto') {
-        return caesar_crypto(value, caesar_value)
+        return caesar_crypto(value, parseInt(caesar_value))
     } else {
-        return caesar_unrypto(value, caesar_value)
+        return caesar_uncrypto(value, parseInt(caesar_value))
     }
 }
 
